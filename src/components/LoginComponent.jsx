@@ -1,9 +1,12 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import "../Sass/LoginComponent.scss";
 import { LoginApi } from "../api/AuthApi";
+import LinkedinLogo from '../assets/LinkedinLogo.png'
 
 export default function LoginComponent() {
   const [credentails, setCredentials] = useState({});
+  let navigate = useNavigate();
 
   const login = async () => {
     try {
@@ -14,12 +17,14 @@ export default function LoginComponent() {
   };
   return (
     <div className="login-wrapper">
+        <img src={LinkedinLogo} className="linkedinLogo" />
       <div className="login-wrapper-inner">
-        <h1>Login</h1>
+        <h1 className="heading">Sign in</h1>
+        <p className="sub-heading">Stay updated on your professional world</p>
         <div className="login-input">
           <input
             type="email"
-            placeholder="Email"
+            placeholder="Email or Phone"
             onChange={(event) =>
               setCredentials({ ...credentails, email: event.target.value })
             }
@@ -37,6 +42,15 @@ export default function LoginComponent() {
         <button className="login-btn" onClick={login}>
           Sign In
         </button>
+      </div>
+      <hr className="hr-text" data-content="or" />
+      <div className="google-btn-container">
+        <p className="go-to-signup">
+          New to LinkedIn?{" "}
+          <span className="join-now" onClick={() => navigate("/register")}>
+            Join now
+          </span>
+        </p>
       </div>
     </div>
   );
