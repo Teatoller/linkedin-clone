@@ -34,16 +34,16 @@ i. On terminal run ```yarn dev or nm dev```
 
 *NB* The application will run on port `http://localhost:5173/` and open on the browser. If it does not open it manually.
 
-#### Endpoints
+#### routes
 
-Test with Postman or equivalent.
+on browser e.g `http://localhost:5173/login`
 
 NB: When creating company **_ensure_** that they exactly match the name in the DepotPriceController
 
 | #  | purpose                         | endpoint              |
 |----|---------------------------------|-----------------------|
-| 1. | POST:register user              | /register             |
-| 2. | POST:login user                 | /login                |
+| 1. | register user              | /register             |
+| 2. | login user                 | /login                |
 |    |                                 |                       |
 c
 
