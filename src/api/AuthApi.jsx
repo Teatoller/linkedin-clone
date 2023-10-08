@@ -1,4 +1,4 @@
-import { signInWithEmailAndPassword } from "firebase/auth";
+import { signInWithEmailAndPassword, createUserWithEmailAndPassword } from "firebase/auth";
 import { authentication } from "../firebasConfig";
 
 export const LoginApi = (email, password) => {
@@ -9,3 +9,12 @@ export const LoginApi = (email, password) => {
     return error;
   }
 };
+
+export const RegisterApi = (email, password) => {
+    try {
+      let response = createUserWithEmailAndPassword(authentication, email, password);
+      return response;
+    } catch (error) {
+      return error;
+    }
+  };
