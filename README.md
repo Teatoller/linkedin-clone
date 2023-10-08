@@ -14,9 +14,9 @@ To check your version on terminal run ```node -v```
 
 - ```mkdir project```
 - ```cd project```
-- ``````
-- ```cd linkedin clone```
-- ```git checkout develop```
+- ```git clone https://github.com/Teatoller/linkedin-clone.git```
+- ```cd linkedin-clone```
+- ```git checkout dev```
 
 v. Open your choice editor  (for vscode run ```code .``` on terminal)
 
@@ -45,7 +45,6 @@ NB: When creating company **_ensure_** that they exactly match the name in the D
 | 1. | POST:register user              | /register             |
 | 2. | POST:login user                 | /login                |
 |    |                                 |                       |
-
-
+c
 
 - stop application ```control + c```
