@@ -1,9 +1,10 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "../Sass/LoginComponent.scss";
-import { LoginApi } from "../api/AuthApi";
+import { LoginApi, GoogleSignInAPI } from "../api/AuthApi";
 import LinkedinLogo from "../assets/LinkedinLogo.png";
 import GoogleButton from "react-google-button";
+import { toast } from "react-toastify";
 
 export default function LoginComponent() {
   const [credentails, setCredentials] = useState({});
@@ -12,9 +13,24 @@ export default function LoginComponent() {
   const login = async () => {
     try {
       await LoginApi(credentails.email, credentails.password);
+      navigate("/");
     } catch (error) {
       console.log(error);
+      toast.error("Please Check your Credentials");
     }
+  };
+
+  const googleSignIn = async() => {
+    try {
+        let response = await GoogleSignInAPI();
+        console.log("res...", response);
+    navigate("/");
+    } catch (error) {
+        console.log(error)
+        toast.error("Please Check your Credentials");
+    }
+    
+    
   };
   return (
     <div className="login-wrapper">
@@ -47,11 +63,9 @@ export default function LoginComponent() {
       <hr className="hr-text" data-content="or" />
       <div className="google-btn-container">
         <GoogleButton
-        className="google-btn"
+          className="google-btn"
           type="dark" // can be light or dark
-          onClick={() => {
-            console.log("Google button clicked");
-          }}
+          onClick={() => {googleSignIn()}}
         />
         <p className="go-to-signup">
           New to LinkedIn?{" "}

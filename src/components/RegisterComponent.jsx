@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import "../Sass/LoginComponent.scss";
 import { RegisterApi } from "../api/AuthApi";
 import LinkedinLogo from '../assets/LinkedinLogo.png'
+import { toast } from "react-toastify";
 
 export default function RegisterComponent() {
   const [credentails, setCredentials] = useState({});
@@ -11,9 +12,11 @@ export default function RegisterComponent() {
   const register = async () => {
     try {
       await RegisterApi(credentails.email, credentails.password);
-      navigate("/home");
+      toast.success("Account Created!");
+      navigate("/");
     } catch (error) {
       console.log(error);
+      toast.error("Cannot Create your Account");
     }
   };
   return (
@@ -48,7 +51,7 @@ export default function RegisterComponent() {
       <div className="google-btn-container">
         <p className="go-to-signup">
           Already on LinkedIn?{" "}
-          <span className="join-now" onClick={() => navigate("/")}>
+          <span className="join-now" onClick={() => navigate("/login")}>
             Sign in
           </span>
         </p>
