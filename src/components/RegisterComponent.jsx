@@ -13,7 +13,7 @@ export default function RegisterComponent() {
     try {
       await RegisterApi(credentails.email, credentails.password);
       toast.success("Account Created!");
-      navigate("/");
+      navigate("/home");
     } catch (error) {
       console.log(error);
       toast.error("Cannot Create your Account");
@@ -51,7 +51,7 @@ export default function RegisterComponent() {
       <div className="google-btn-container">
         <p className="go-to-signup">
           Already on LinkedIn?{" "}
-          <span className="join-now" onClick={() => navigate("/login")}>
+          <span className="join-now" onClick={() => navigate("/")}>
             Sign in
           </span>
         </p>

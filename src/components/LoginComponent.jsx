@@ -13,7 +13,7 @@ export default function LoginComponent() {
   const login = async () => {
     try {
       await LoginApi(credentails.email, credentails.password);
-      navigate("/");
+      navigate("/home");
     } catch (error) {
       console.log(error);
       toast.error("Please Check your Credentials");
@@ -24,7 +24,7 @@ export default function LoginComponent() {
     try {
         let response = await GoogleSignInAPI();
         console.log("res...", response);
-    navigate("/");
+    navigate("/home");
     } catch (error) {
         console.log(error)
         toast.error("Please Check your Credentials");
