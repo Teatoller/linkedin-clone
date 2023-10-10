@@ -27,3 +27,13 @@
 .react-icon:hover {
   color: black;
 }
+
+.user-logo {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  object-fit: cover;
+  position: absolute;
+  right: 30px;
+  cursor: pointer;
+}
