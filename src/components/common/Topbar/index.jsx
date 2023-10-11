@@ -28,8 +28,6 @@ export default function Topbar() {
         
            <AiFillMessage size={30}
         className="react-icon" />
-         {/* <AiFillHome size={30}
-        className="react-icon" /> */}
         <FaBell size={30}
           className="react-icon" />
       </div>
