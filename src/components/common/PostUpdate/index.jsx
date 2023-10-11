@@ -4,7 +4,7 @@ import ModalComponent from "../Modal";
 
 export default function PostStatus() {
   const [open, setOpen] = useState(false);
-  const [status, setStatus] = useState(false);
+  const [status, setStatus] = useState("");
 
   //   input dispatch to firebase
   const handleSubmit = () => {};

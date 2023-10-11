@@ -1,13 +1,11 @@
 import React, { useState } from "react";
+import PropTypes from "prop-types";
 import { Button, Modal } from "antd";
 import "./index.scss";
 
-export default function ModalComponent({ open, setOpen }) {
+export default function ModalComponent({ open, setOpen, status, setStatus, handleSubmit }) {
   const [loading, setLoading] = useState(false);
 
-  const showModal = () => {
-    setOpen(true);
-  };
   const handleOk = (e) => {
     console.log(e);
     setOpen(false);
@@ -33,9 +31,9 @@ export default function ModalComponent({ open, setOpen }) {
           <Button
             key="submit"
             type="primary"
-            disabled
+            disabled={status.length > 0 ? false : true}
             loading={loading}
-            onClick={handleOk}
+            onClick={handleSubmit}
           >
             Post
           </Button>,
@@ -45,8 +43,20 @@ export default function ModalComponent({ open, setOpen }) {
           className="modal-input"
           type="text"
           placeholder="What do you want to talk about?"
+          value={status}
+          onChange={(event) => {
+            setStatus(event.target.value);
+          }}
         />
       </Modal>
     </>
   );
 }
+
+ModalComponent.propTypes = {
+  open: PropTypes.bool.isRequired,
+  setOpen: PropTypes.func.isRequired,
+  status: PropTypes.string.isRequired,
+  setStatus: PropTypes.func.isRequired,
+  handleSubmit: PropTypes.func.isRequired,
+};
