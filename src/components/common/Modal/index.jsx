@@ -1,9 +1,10 @@
 import React, { useState } from "react";
-import { Modal } from "antd";
-import './index.scss'
+import { Button, Modal } from "antd";
+import "./index.scss";
 
-export default function ModalComponent({open, setOpen}) {
-  
+export default function ModalComponent({ open, setOpen }) {
+  const [loading, setLoading] = useState(false);
+
   const showModal = () => {
     setOpen(true);
   };
@@ -18,7 +19,7 @@ export default function ModalComponent({open, setOpen}) {
   return (
     <>
       <Modal
-        title="Basic Modal"
+        title="Create a post"
         open={open}
         onOk={handleOk}
         onCancel={handleCancel}
@@ -28,10 +29,23 @@ export default function ModalComponent({open, setOpen}) {
         cancelButtonProps={{
           disabled: true,
         }}
+        footer={[
+          <Button
+            key="submit"
+            type="primary"
+            disabled
+            loading={loading}
+            onClick={handleOk}
+          >
+            Post
+          </Button>,
+        ]}
       >
-        <p>Some contents...</p>
-        <p>Some contents...</p>
-        <p>Some contents...</p>
+        <input
+          className="modal-input"
+          type="text"
+          placeholder="What do you want to talk about?"
+        />
       </Modal>
     </>
   );
